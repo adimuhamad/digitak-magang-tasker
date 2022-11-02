@@ -40,19 +40,25 @@ Laravel SB Admin 2 uses some open-source third-party libraries/packages, many th
 
 `login`
 
-<img src="https://imgur.com/YjGp6Sbl.png">
-
-***
-
-`register`
-
-<img src="https://imgur.com/Wj09cu4l.png">
+<img src="https://i.ibb.co/gtmgbyj/preview-2.png">
 
 ***
 
 `dashboard`
 
-<img src="https://imgur.com/CrmOfT5l.png">
+<img src="https://i.ibb.co/m42TN1p/preview-1.png">
+
+***
+
+`profile`
+
+<img src="https://i.ibb.co/DbsHRg9/preview-4.png">
+
+***
+
+`user maagement`
+
+<img src="https://i.ibb.co/nMNw0P9/preview-5.png">
 
 ## License
 

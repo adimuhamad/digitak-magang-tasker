@@ -15,11 +15,12 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         User::create([
-            'name' => 'Super',
+            'first_name' => 'Super',
             'last_name' => 'Administrator',
             'email' => 'admin@gmail.com',
             'email_verified_at' => now(),
-            'password' => Hash::make('password123'), // password
+            'password' => Hash::make('password123'),
+            'role' => 0
         ]);
     }
 }
