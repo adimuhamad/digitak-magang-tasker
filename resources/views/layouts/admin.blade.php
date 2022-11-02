@@ -29,7 +29,7 @@
 <!-- Page Wrapper -->
 <div id="wrapper">
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav bg-gradient-warning sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('home') }}">
@@ -57,14 +57,6 @@
             {{ __('Settings') }}
         </div>
 
-        <!-- Nav Item -->
-        <li class="nav-item {{ Nav::isRoute('basic.index') }}">
-            <a class="nav-link" href="{{ route('basic.index') }}">
-                <i class="fas fa-fw fa-plus"></i>
-                <span>{{ __('Basic CRUD') }}</span>
-            </a>
-        </li>
-
         <!-- Nav Item - Profile -->
         <li class="nav-item {{ Nav::isRoute('profile') }}">
             <a class="nav-link" href="{{ route('profile') }}">
@@ -73,19 +65,19 @@
             </a>
         </li>
 
+        <!-- Nav Item -->
+        <li class="nav-item {{ Nav::isRoute('user.index') }}">
+            <a class="nav-link" href="{{ route('user.index') }}">
+                <i class="fa-solid fa-users"></i>
+                <span>{{ __('User Management') }}</span>
+            </a>
+        </li>        
+
         <!-- Nav Item - About -->
         <li class="nav-item {{ Nav::isRoute('about') }}">
             <a class="nav-link" href="{{ route('about') }}">
                 <i class="fas fa-fw fa-hands-helping"></i>
                 <span>{{ __('About') }}</span>
-            </a>
-        </li>
-
-        <!-- Nav Item -->
-        <li class="nav-item {{ Nav::isRoute('blank') }}">
-            <a class="nav-link" href="{{ route('blank') }}">
-                <i class="fas fa-fw fa-book"></i>
-                <span>{{ __('Blank Page') }}</span>
             </a>
         </li>
 
@@ -119,7 +111,7 @@
                     <div class="input-group">
                         <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                         <div class="input-group-append">
-                            <button class="btn btn-primary" type="button">
+                            <button class="btn btn-warning" type="button">
                                 <i class="fas fa-search fa-sm"></i>
                             </button>
                         </div>
@@ -140,7 +132,7 @@
                                 <div class="input-group">
                                     <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                                     <div class="input-group-append">
-                                        <button class="btn btn-primary" type="button">
+                                        <button class="btn btn-warning" type="button">
                                             <i class="fas fa-search fa-sm"></i>
                                         </button>
                                     </div>
@@ -158,7 +150,7 @@
                         </a>
                         <!-- Dropdown - Alerts -->
                         <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
-                            <h6 class="dropdown-header">
+                            <h6 class="dropdown-header" style="background-color: #E2A814; border: #E2A814">
                                 Alerts Center
                             </h6>
                             <a class="dropdown-item d-flex align-items-center" href="#">
@@ -207,12 +199,12 @@
                         </a>
                         <!-- Dropdown - Messages -->
                         <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
-                            <h6 class="dropdown-header">
+                            <h6 class="dropdown-header" style="background-color: #E2A814; border: #E2A814">
                                 Message Center
                             </h6>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
+                                    <img class="rounded-circle" src="https://i.ibb.co/DCgGvHv/profil-1.jpg" alt="">
                                     <div class="status-indicator bg-success"></div>
                                 </div>
                                 <div class="font-weight-bold">
@@ -222,7 +214,7 @@
                             </a>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="https://source.unsplash.com/AU4VPcFN4LE/60x60" alt="">
+                                    <img class="rounded-circle" src="https://i.ibb.co/XFBsf2J/profil-2.jpg" alt="">
                                     <div class="status-indicator"></div>
                                 </div>
                                 <div>
@@ -232,7 +224,7 @@
                             </a>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="https://source.unsplash.com/CS2uCrpNzJY/60x60" alt="">
+                                    <img class="rounded-circle" src="https://i.ibb.co/j5fxbf5/profil-3.jpg" alt="">
                                     <div class="status-indicator bg-warning"></div>
                                 </div>
                                 <div>
@@ -242,7 +234,7 @@
                             </a>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="">
+                                    <img class="rounded-circle" src="https://i.ibb.co/rsvktBX/profil-4.jpg" alt="">
                                     <div class="status-indicator bg-success"></div>
                                 </div>
                                 <div>
@@ -259,8 +251,8 @@
                     <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->first_name }}</span>
-                            <figure class="img-profile rounded-circle avatar font-weight-bold" data-initial="{{ Auth::user()->first_name[0] }}"></figure>
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small font-weight-bold">{{ Auth::user()->full_name }}</span>
+                            <figure class="img-profile rounded-circle avatar font-weight-bold" style="background-color: #E2A814" data-initial="{{ Auth::user()->first_name[0] }}"></figure>
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -327,12 +319,12 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">{{ __('Ready to Leave?') }}</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
+                    <span aria-hidden="true">x</span>
                 </button>
             </div>
             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">
-                <button class="btn btn-link" type="button" data-dismiss="modal">{{ __('Cancel') }}</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                 <a class="btn btn-danger" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     @csrf

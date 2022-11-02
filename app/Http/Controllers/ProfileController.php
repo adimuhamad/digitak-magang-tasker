@@ -30,7 +30,6 @@ class ProfileController extends Controller
             'password_confirmation' => 'nullable|min:8|max:12|required_with:new_password|same:new_password'
         ]);
 
-
         $user = User::findOrFail(Auth::user()->id);
         $user->first_name = $request->input('first_name');
         $user->last_name = $request->input('last_name');
@@ -40,12 +39,12 @@ class ProfileController extends Controller
             if (Hash::check($request->input('current_password'), $user->password)) {
                 $user->password = Hash::make($request->input('new_password'));
             } else {
-                return redirect()->back()->withInput();
+                return redirect()->back()->withInput()->with('message2', 'Current password is not valid!');
             }
         }
 
         $user->save();
 
-        return redirect()->route('profile');
+        return redirect()->route('profile')->with('message', 'User updated successfully!');
     }
 }

@@ -5,12 +5,37 @@
     <h1 class="h3 mb-4 text-gray-800">{{ __('Profile') }}</h1>
 
     @if ($errors->any())
-        <div class="alert alert-danger border-left-danger" role="alert">
-            <ul class="pl-4 my-2">
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
+        <div class="alert alert-danger alert-dismissible fade show border-left-danger" role="alert">
+          <div class="row">
+            <div class="col-md-12">
+              <ul class="pl-4 my-2">
+                  @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                  @endforeach
+              </ul>
+            </div>
+            <div class="col-md-0">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="line-height: inherit!important; vertical-align: middle;">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          </div>            
+        </div>
+    @endif
+
+    @if (session('message'))
+        <div class="alert alert-success alert-dismissible fade show border-left-success" role="alert">
+            {{ session('message') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @elseif (session('message2'))
+        <div class="alert alert-danger alert-dismissible fade show border-left-danger" role="alert">
+            {{ session('message2') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
         </div>
     @endif
 
@@ -20,7 +45,7 @@
 
             <div class="card shadow mb-4">
                 <div class="card-profile-image mt-4">
-                    <figure class="rounded-circle avatar avatar font-weight-bold" style="font-size: 60px; height: 180px; width: 180px;" data-initial="{{ Auth::user()->name[0] }}"></figure>
+                    <figure class="rounded-circle avatar avatar font-weight-bold" style="font-size: 60px; height: 180px; width: 180px; background-color: #E2A814" data-initial="{{ Auth::user()->first_name[0] }}"></figure>
                 </div>
                 <div class="card-body">
 
@@ -49,7 +74,7 @@
             <div class="card shadow mb-4">
 
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">My Account</h6>
+                    <h6 class="m-0 font-weight-bold text-warning">My Account</h6>
                 </div>
 
                 <div class="card-body">
@@ -65,8 +90,8 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group focused">
-                                        <label class="form-control-label" for="name">First Name<span class="small text-danger"></span></label>
-                                        <input type="text" id="name" class="form-control" name="name" placeholder="First Name" value="{{ old('name', Auth::user()->name) }}">
+                                        <label class="form-control-label" for="first_name">First Name<span class="small text-danger"></span></label>
+                                        <input type="text" id="first_name" class="form-control" name="first_name" placeholder="First Name" value="{{ old('first_name', Auth::user()->first_name) }}">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -111,8 +136,8 @@
                         <!-- Button -->
                         <div class="pl-lg-4">
                             <div class="row">
-                                <div class="col text-center">
-                                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                                <div class="col">
+                                    <button type="submit" class="btn btn-warning">Save Changes</button>
                                 </div>
                             </div>
                         </div>

@@ -27,10 +27,6 @@ Route::get('/about', function () {
     return view('about');
 })->name('about');
 
-Route::get('/blank', function () {
-    return view('blank');
-})->name('blank');
-
 Route::middleware('auth')->group(function() {
-    Route::resource('basic', BasicController::class);
+    Route::resource('user', UserController::class);
 });

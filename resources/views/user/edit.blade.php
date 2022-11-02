@@ -8,22 +8,13 @@
 
     <div class="card">
         <div class="card-body">
-            <form action="{{ route('basic.store') }}" method="post">
+            <form action="{{ route('user.update', $user->id) }}" method="post">
                 @csrf
-
-                @if ($errors->any())
-                    <div class="alert alert-danger border-left-danger" role="alert">
-                        <ul class="pl-4 my-2">
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
+                @method('put')
 
                 <div class="form-group">
                   <label for="first_name">First Name</label>
-                  <input type="text" class="form-control @error('first_name') is-invalid @enderror" name="first_name" id="first_name" placeholder="First Name" autocomplete="off" value="{{ old('first_name') }}">
+                  <input type="text" class="form-control @error('first_name') is-invalid @enderror" name="first_name" id="first_name" placeholder="First Name" autocomplete="off" value="{{ old('first_name') ?? $user->first_name }}">
                   @error('first_name')
                     <span class="text-danger">{{ $message }}</span>
                   @enderror
@@ -31,15 +22,15 @@
 
                 <div class="form-group">
                   <label for="last_name">Last Name</label>
-                  <input type="text" class="form-control @error('last_name') is-invalid @enderror" name="last_name" id="last_name" placeholder="Last Name" autocomplete="off" value="{{ old('last_name') }}">
+                  <input type="text" class="form-control @error('last_name') is-invalid @enderror" name="last_name" id="last_name" placeholder="Last Name" autocomplete="off" value="{{ old('last_name') ?? $user->last_name }}">
                   @error('last_name')
                     <span class="text-danger">{{ $message }}</span>
                   @enderror
                 </div>
 
                 <div class="form-group">
-                  <label for="email">E-mail</label>
-                  <input type="e-mail" class="form-control @error('email') is-invalid @enderror" name="email" id="email" placeholder="Email" autocomplete="off" value="{{ old('email') }}">
+                  <label for="email">Email</label>
+                  <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="email" placeholder="Email" autocomplete="off" value="{{ old('email') ?? $user->email }}">
                   @error('email')
                     <span class="text-danger">{{ $message }}</span>
                   @enderror
@@ -53,8 +44,8 @@
                   @enderror
                 </div>
 
-                <button type="submit" class="btn btn-primary">Save</button>
-                <a href="{{ route('basic.index') }}" class="btn btn-default">Cancel</a>
+                <button type="submit" class="btn btn-warning">Save</button>
+                <a href="{{ route('user.index') }}" class="btn btn-default">Cancel</a>
 
             </form>
         </div>

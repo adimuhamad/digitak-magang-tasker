@@ -8,7 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class BasicController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,8 @@ class BasicController extends Controller
      */
     public function index()
     {
-        return view('basic.list', [
-            'title' => 'Basic CRUD',
+        return view('user.index', [
+            'title' => 'User Management',
             'users' => User::paginate(10)
         ]);
     }
@@ -30,10 +30,12 @@ class BasicController extends Controller
      */
     public function create()
     {
-        return view('basic.create', [
-            'title' => 'New User',
-            'users' => User::paginate(10)
-        ]);
+        // return view('user.create', [
+        //     'title' => 'New User',
+        //     'users' => User::paginate(10)
+        // ]);
+
+        return redirect()->route('user.index')->with('message2', 'Select "New User" above if you want to add new user!');
     }
 
     /**
@@ -44,14 +46,18 @@ class BasicController extends Controller
      */
     public function store(AddUserRequest $request)
     {
-        User::create([
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password)
+        $validatedData = $request->validate([
+          'first_name' => 'required',
+          'last_name' => 'required',
+          'email' => 'required|email:dns|unique:users',
+          'password' => 'required|min:10|max:255'
         ]);
 
-        return redirect()->route('basic.index')->with('message', 'User added successfully!');
+        $validatedData['password'] = Hash::make($validatedData['password']);
+        $validatedData['email_verified_at'] = now();
+
+        User::create($validatedData);
+        return redirect()->route('user.index')->with('message', 'User added successfully!');
     }
 
     /**
@@ -71,11 +77,11 @@ class BasicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $basic)
+    public function edit(User $user)
     {
-        return view('basic.edit', [
+        return view('user.edit', [
             'title' => 'Edit User',
-            'user' => $basic
+            'user' => $user
         ]);
     }
 
@@ -86,17 +92,17 @@ class BasicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(EditUserRequest $request, User $basic)
+    public function update(EditUserRequest $request, User $user)
     {
         if($request->filled('password')) {
-            $basic->password = Hash::make($request->password);
+            $user->password = Hash::make($request->password);
         }
-        $basic->first_name = $request->first_name;
-        $basic->last_name = $request->last_name;
-        $basic->email = $request->email;
-        $basic->save();
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
+        $user->email = $request->email;
+        $user->save();
 
-        return redirect()->route('basic.index')->with('message', 'User updated successfully!');
+        return redirect()->route('user.index')->with('message', 'User updated successfully!');
     }
 
     /**
@@ -105,10 +111,10 @@ class BasicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $basic)
+    public function destroy(User $user)
     {
-        $basic->delete();
+        $user->delete();
 
-        return redirect()->route('basic.index')->with('message', 'User deleted successfully!');
+        return redirect()->route('user.index')->with('message', 'User deleted successfully!');
     }
 }
