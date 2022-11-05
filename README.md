@@ -56,7 +56,7 @@ Laravel SB Admin 2 uses some open-source third-party libraries/packages, many th
 
 ***
 
-`user maagement`
+`user management`
 
 <img src="https://i.ibb.co/nMNw0P9/preview-5.png">
 
