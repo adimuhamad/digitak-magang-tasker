@@ -21,6 +21,7 @@
 
     <!-- Favicon -->
     <link href="{{ asset('img/digitak-icon.png') }}" rel="icon" type="image/png">
+    
 
     @stack('css')
 </head>
@@ -39,6 +40,12 @@
             <div class="sidebar-brand-text mx-2">Digitak</div>
         </a>
 
+         <!-- Sidebar Toggler (Sidebar) -->
+         <div class="text-center d-none d-md-inline">
+            <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
+
+
         <!-- Divider -->
         <hr class="sidebar-divider my-0">
 
@@ -48,6 +55,7 @@
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>{{ __('Dashboard') }}</span></a>
         </li>
+
 
         <!-- Divider -->
         <hr class="sidebar-divider">
@@ -71,7 +79,15 @@
                 <i class="fa-solid fa-users"></i>
                 <span>{{ __('User Management') }}</span>
             </a>
-        </li>        
+        </li>       
+        
+         <!-- Nav Item - Magang -->
+         <li class="nav-item {{ Nav::isRoute('magang') }}">
+            <a class="nav-link" href="{{ route('magang') }}">
+                <i class="fas fa-fw fa-user"></i>
+                <span>{{ __('Magang') }}</span>
+            </a>
+        </li>
 
         <!-- Nav Item - About -->
         <li class="nav-item {{ Nav::isRoute('about') }}">
@@ -84,11 +100,7 @@
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
 
-        <!-- Sidebar Toggler (Sidebar) -->
-        <div class="text-center d-none d-md-inline">
-            <button class="rounded-circle border-0" id="sidebarToggle"></button>
-        </div>
-
+       
     </ul>
     <!-- End of Sidebar -->
 
