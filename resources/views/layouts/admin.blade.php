@@ -60,7 +60,7 @@
         <!-- Nav Item - Profile -->
         <li class="nav-item {{ Nav::isRoute('profile') }}">
             <a class="nav-link" href="{{ route('profile') }}">
-                <i class="fas fa-fw fa-user"></i>
+                <i class="fa-solid fa-user"></i>
                 <span>{{ __('Profile') }}</span>
             </a>
         </li>
@@ -76,7 +76,7 @@
         <!-- Nav Item - About -->
         <li class="nav-item {{ Nav::isRoute('about') }}">
             <a class="nav-link" href="{{ route('about') }}">
-                <i class="fas fa-fw fa-hands-helping"></i>
+                <i class="fa-solid fa-circle-info"></i>
                 <span>{{ __('About') }}</span>
             </a>
         </li>
