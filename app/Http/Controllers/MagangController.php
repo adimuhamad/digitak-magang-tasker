@@ -15,7 +15,7 @@ class MagangController extends Controller
     public function index()
     {
         return view('magang.index', [
-            'title' => 'User Management',
+            'title' => 'Magang Management',
             'users' => User::paginate(10)
 
         ]);

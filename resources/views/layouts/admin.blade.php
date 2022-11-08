@@ -40,12 +40,6 @@
             <div class="sidebar-brand-text mx-2">Digitak</div>
         </a>
 
-         <!-- Sidebar Toggler (Sidebar) -->
-         <div class="text-center d-none d-md-inline">
-            <button class="rounded-circle border-0" id="sidebarToggle"></button>
-        </div>
-
-
         <!-- Divider -->
         <hr class="sidebar-divider my-0">
 
@@ -77,7 +71,7 @@
         <li class="nav-item {{ Nav::isRoute('user.index') }}">
             <a class="nav-link" href="{{ route('user.index') }}">
                 <i class="fa-solid fa-users"></i>
-                <span>{{ __('User Management') }}</span>
+                <span>{{ __('User') }}</span>
             </a>
         </li>       
         
@@ -100,6 +94,10 @@
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
 
+        <!-- Sidebar Toggler (Sidebar) -->
+        <div class="text-center d-none d-md-inline">
+          <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
        
     </ul>
     <!-- End of Sidebar -->
