@@ -46,7 +46,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($users as $user)
+            @foreach ($users->skip(1) as $user)
                 <tr>
                     <td scope="row">{{ $loop->iteration }}</td>
                     <td>{{ $user->full_name }}</td>
