@@ -41,8 +41,8 @@
             <tr>
                 <th>#</th>
                 <th>Full Name</th>
-                <th>Major</th>
                 <th>Education Level</th>
+                <th>Major</th>
                 <th>Start Date</th>
                 <th>Finish Date</th>
                 <th>Action</th>
@@ -53,8 +53,8 @@
                 <tr>
                     <td scope="row">{{ $loop->iteration }}</td>
                     <td>{{ $user->full_name }}</td>
-                    <td>{{ $user->jurusan }}</td>
                     <td>{{ $user->tingkat }}</td>
+                    <td>{{ $user->jurusan }}</td>
                     <td>{{ $user->tanggal_masuk }}</td>
                     @if ($user->tanggal_berakhir == null)
                       <td>None</td>
@@ -96,19 +96,17 @@
             <form action="{{ route('user.store') }}" method="post">
               @csrf
 
-              <ul class="nav nav-pills nav-justified">
-                <li class="nav-item"><a href="#profile-tab" class="nav-link active" data-toggle="pill">Akun</a></li>
-                <li class="nav-item"><a href="#setting-tab" class="nav-link" data-toggle="pill">Profil</a></li>                 
+              <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link active" id="akun-tab" data-toggle="tab" data-target="#akun" type="button" role="tab" aria-controls="akun" aria-selected="true">Akun</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="profil-tab" data-toggle="tab" data-target="#profil" type="button" role="tab" aria-controls="profil" aria-selected="false">Profil</button>
+                </li>
               </ul>
-                
-              <!-- All Tabs Main div -->
-                
-              <div class="tab-content">
-              
-                <!-- Akun -->
-                  
-                <div class="tab-pane show fade active" id="profile-tab">
-                  <hr>
+
+              <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="akun" role="tabpanel" aria-labelledby="akun-tab">
                   <div class="row mt-3">
                     <div class="col-md-3 mt-1">
                       <label class="form-control-label">First Name</label>
@@ -157,11 +155,8 @@
                     </div>
                   </div>
                 </div>
-                
-                <!-- Profil -->
-                
-                <div class="tab-pane fade" id="setting-tab">
-                  <hr>
+
+                <div class="tab-pane fade" id="profil" role="tabpanel" aria-labelledby="profil-tab">
                   <div class="row mt-3">
                     <div class="col-md-3">
                       <label class="form-control-label">Tingkat</label>
@@ -212,9 +207,9 @@
                         <span class="text-danger">{{ $message }}</span>
                       @enderror
                     </div>
-                  </div>                
-                </div>                
-              </div>              
+                  </div>
+                </div>
+              </div>           
 
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa-solid fa-xmark mr-2"></i>Close</button>

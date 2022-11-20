@@ -6,10 +6,10 @@
 
     <!-- Main Content goes here -->
 
-    <button type="button" class="btn btn-warning mb-3" data-toggle="modal" data-target="#addModal">
+    {{-- <button type="button" class="btn btn-warning mb-3" data-toggle="modal" data-target="#addModal">
       <i class="fa-solid fa-plus mr-2"></i>
       New User
-    </button>
+    </button> --}}
 
     @if ($errors->any())
         <div class="alert alert-danger alert-dismissible fade show border-left-danger" role="alert">
@@ -57,7 +57,7 @@
                             <form action="{{ route('user.destroy', $user->id) }}" method="post">
                                 @csrf
                                 @method('delete')
-                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure want to delete this?')"><i class="fa-solid fa-trash-can mr-2"></i>Delete</button>
+                                {{-- <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure want to delete this?')"><i class="fa-solid fa-trash-can mr-2"></i>Delete</button> --}}
                             </form>
                         </div>
                     </td>
