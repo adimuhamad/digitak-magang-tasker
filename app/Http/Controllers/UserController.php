@@ -37,6 +37,7 @@ class UserController extends Controller
 
         return redirect()->route('user.index')->with('message2', 'Select "New User" above if you want to add new user!');
     }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -50,7 +51,12 @@ class UserController extends Controller
           'first_name' => 'required',
           'last_name' => 'required',
           'email' => 'required|email:dns|unique:users',
-          'password' => 'required|min:10|max:255'
+          'password' => 'required|min:10|max:255',
+          'jurusan' => 'required',
+          'tingkat' => 'required',
+          'tanggal_masuk' => 'required',
+          'tanggal_berakhir' => 'required',
+          'durasi' => 'required'
         ]);
 
         $validatedData['password'] = Hash::make($validatedData['password']);

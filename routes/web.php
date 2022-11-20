@@ -17,20 +17,18 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 
-Route::get('/', 'HomeController@index')->name('home');
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/profile', 'ProfileController@index')->name('profile');
-Route::put('/profile', 'ProfileController@update')->name('profile.update');
-
-Route::get('/magang', 'MagangController@index')->name('magang');
-Route::get('/magang/show', 'MagangController@show')->name('magang.show');
-Route::get('/magang/skill', 'MagangController@skill')->name('magang.skill');
-
-Route::get('/about', function () {
-    return view('about');
-})->name('about');
-
 Route::middleware('auth')->group(function () {
-    Route::resource('user', UserController::class);
+  Route::get('/', 'HomeController@index')->name('home');
+  Route::get('/home', 'HomeController@index')->name('home');
+
+  Route::get('/profile', 'ProfileController@index')->name('profile');
+  Route::put('/profile', 'ProfileController@update')->name('profile.update');
+
+  Route::get('/about', function () {
+      return view('about');
+  })->name('about');
+
+  Route::resource('user', UserController::class);
+  Route::resource('magang', MagangController::class);
+  Route::get('/magang/skill', 'MagangController@skill')->name('magang.skill');
 });

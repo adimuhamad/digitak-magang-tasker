@@ -50,7 +50,6 @@
                 <span>{{ __('Dashboard') }}</span></a>
         </li>
 
-
         <!-- Divider -->
         <hr class="sidebar-divider">
 
@@ -76,8 +75,8 @@
         </li>       
         
          <!-- Nav Item - Magang -->
-         <li class="nav-item {{ Nav::isRoute('magang') }}">
-            <a class="nav-link" href="{{ route('magang') }}">
+         <li class="nav-item {{ Nav::isRoute('magang.index') }}">
+            <a class="nav-link" href="{{ route('magang.index') }}">
                 <i class="fas fa-fw fa-user"></i>
                 <span>{{ __('Magang') }}</span>
             </a>
